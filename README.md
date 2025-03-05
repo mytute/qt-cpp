@@ -178,3 +178,11 @@ Dialog::~Dialog() {
     delete layout; // Manually delete the layout
 }
 ```
+
+## next create new project with UI(tick "Generate form") file  with "QMainWindow".        
+if you select "QMainWindow" then by default have menu bar on your window (File,Edit,View..etc)   
+select "Forms/mainwindow.ui" file to see template of main window.    
+
+
+
+

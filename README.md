@@ -85,35 +85,10 @@ sudo dnf install qt-creator
 
 After installation, you can launch Qt Creator from your application menu or by running `qtcreator` in the terminal.
 
-## 6. Test Your Installation
-
-You can create a simple Qt application to test your installation. For example, create a file named `main.cpp` with the following content:
-
-```cpp
-#include <QApplication>
-#include <QLabel>
-
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-    QLabel label("Hello, Qt5!");
-    label.show();
-    return app.exec();
-}
-```
-
-Then, compile and run the application:
-
+## 6. Install language package   
+this will install the lrelease tool along with other Qt Linguist utilities.  
 ```bash
-qmake-qt5 -project
-qmake-qt5
-make
-./your_project_name
+$ sudo dnf install qt5-linguist
 ```
 
-If everything is set up correctly, you should see a window with the text "Hello, Qt5!".
 
-## Conclusion
-
-You have now successfully installed Qt5 on Fedora. You can start developing Qt applications or using Qt-based software on your system. If you encounter any issues, refer to the official Qt documentation or Fedora forums for additional support.
-EOL

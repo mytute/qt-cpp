@@ -91,4 +91,90 @@ this will install the lrelease tool along with other Qt Linguist utilities.
 $ sudo dnf install qt5-linguist
 ```
 
+## 7 Create a New Qt Widgets Application
+* Go to File → New Project.  
+* Select Qt Widgets Application.  
+* Name it LoginSystem.   
+* select "qmake" or "cmake"   
+* select "QDialog" as "Base class"  
+* give name to "Header file" as "dialog.h" for store declarations (abstractions of function, classes etc )  
+* give name to "Source file" as "dialog.cpp"  for store definitions (implementation of function, classes etc )  
+* give name to "Form file" as "dialog.cpp" for implementation for only ui(xml later convert to c++ )
+* select "Language"  (this for translate application )
+* Click Finish.
+* click play icon to build and run project on left botton corner of the ui.
 
+open add button to the dialog box    
+> Sources/dialog.cpp
+```cpp
+#include "dialog.h"
+#include <QtWidgets>
+
+
+Dialog::Dialog(QWidget *parent)
+    : QDialog(parent)
+{
+    QHBoxLayout *layout = new QHBoxLayout();
+    QPushButton* btn = new QPushButton("Ok");
+    btn->setText("Okay");
+    // add button to the layout 
+    layout->addWidget(btn);
+
+    this-> setLayout(layout);
+}
+
+Dialog::~Dialog() {}
+```
+
+organice above code with declarations to the "dialog.h" header file   
+> Headers/dialog.h
+```cpp
+#ifndef DIALOG_H
+#define DIALOG_H
+
+#include <QDialog>
+
+class QPushButton; // add here
+class QHBoxLayout; // add here
+
+class Dialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    Dialog(QWidget *parent = nullptr);
+    ~Dialog();
+
+private:  // add here
+    QPushButton *btn;  // add here
+    QHBoxLayout *layout; // add here
+
+};
+#endif // DIALOG_H
+```
+
+> Sources/dialog.cpp   
+```cpp
+#include "dialog.h"
+#include <QtWidgets>
+
+
+Dialog::Dialog(QWidget *parent)
+    : QDialog(parent)
+{
+
+    this->setWindowTitle("My Dialog"); // Set dialog window title
+
+    layout = new QHBoxLayout();
+    btn = new QPushButton("Okay");
+
+    layout->addWidget(btn); // Add button to layout
+    this->setLayout(layout); // Set the layout to the dialog
+
+}
+
+Dialog::~Dialog() {
+    delete btn;    // Manually delete the button
+    delete layout; // Manually delete the layout
+}
+```
